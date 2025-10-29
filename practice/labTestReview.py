@@ -117,24 +117,84 @@ def insertionSort(arr):
         arr[j + 1] = key
     return arr
 
-
+def mergeAscending(arr, left, mid, right):
+    i = left
+    j = mid + 1
+    mergedSize = right - left + 1
+    mergedArr = [0] * mergedSize
+    
+    k = 0
+    while i <= mid and j <= right:
+        if arr[i] < arr[j]:
+            mergedArr[k] = arr[i]
+            i += 1
+            k += 1
+        else:
+            mergedArr[k] = arr[j]
+            j += 1
+            k += 1
+    while i <= mid:
+        mergedArr[k] = arr[i]
+        i += 1
+        k += 1 
+    while j <= right:
+        mergedArr[k] = arr[j]
+        j += 1
+        k += 1
+    
+    #merge back to the original arr
+    
+    k = 0
+    while k < mergedSize:
+        arr[left + k] = mergedArr[k]
+        k += 1
+        
+    
 def mergeSort(arr, left, right):
     if left < right:
         mid = (left + right) // 2 
         mergeSort(arr, left, mid)
-        mergeSort(arr, mid + 1, right)      
+        mergeSort(arr, mid + 1, right)
         
-             
+        mergeAscending(arr,left ,mid, right)      
+
+
+def partitionSort(arr,left, right):
+    pivot = arr[right]
+    i = left
+    
+    for j in range(left, right):
+        if arr[j] < pivot:
+            arr[i], arr[j] = arr[j], arr[i]
+            i += 1
+
+    arr[i], arr[right] = arr[right], arr[i]
+    
+    return i
+            
+            
+
+def quickSort(arr,left, right):
+    if left >= right:
+        return
+    
+    k = partitionSort(arr, left, right)
+    quickSort(arr, left, k - 1) #dont have to check index k anymore
+    quickSort(arr, k + 1, right)
              
             
             
                 
-                
+sampleArr = [5,9,221,12,3,51,42,66,13]                
         
+# bubbleSort(sampleArr) #O(n^2)
+# mergeSort(sampleArr,0,len(sampleArr)-1) #O(nlogn)
+# insertionSort(sampleA) #O(n^2)
+quickSort(sampleArr, 0, len(sampleArr) - 1) # O(nlogn)
 
 
 start_time = time.time()
-print(num_paths_memo(15,14))
+print(sampleArr)
 end_time = time.time()
 
-print(f"Elapsed time (memoization): {end_time - start_time} seconds")
+print(f"Elapsed time: {end_time - start_time} seconds")
