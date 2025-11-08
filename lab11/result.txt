@@ -1,0 +1,6 @@
+Hello everyone
+This is file1
+It has multiple lines
+Welcome to file2
+It also has more content
+Testing file merges here

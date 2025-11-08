@@ -1,0 +1,3 @@
+Hello everyone
+This is file1
+It has multiple lines
