@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 #---------------------
 #line chart
 x1 = np.linspace(1, 200, 400)    
-y1 = x1 + np.log(x1)
+y1 = x1 + np.log(x1) 
+#33
 
 plt.figure(figsize=(12, 8))
 plt.plot(x1, y1, label='f(x) = x + log(x)')
