@@ -16,7 +16,6 @@ print('Number of words read:', len(words))
 
 def binary_search(arr, target):
     # Implement iterative binary search here
-    # print(f"Target = {target} , Found at index = {index}, Number of iterations = {iterations}")
 
     indexNum = -1
     iterations = 0
